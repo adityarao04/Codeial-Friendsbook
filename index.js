@@ -10,6 +10,8 @@ const expressLayouts = require('express-ejs-layouts');
 // render the layouts
 app.use(expressLayouts);
 
+const db = require('./config/mongoose');
+
 
 
 
