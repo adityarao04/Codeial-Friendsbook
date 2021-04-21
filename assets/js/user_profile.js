@@ -1,0 +1,1 @@
+console.log('user_profile external js file running');
