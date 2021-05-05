@@ -11,7 +11,7 @@ console.log('user router loaded');
 router.get('/profile', usersController.profile);
 
 router.get('/sign-up', usersController.signUp);
-router.get('/sign-up', usersController.signIn);
+router.get('/sign-in', usersController.signIn);
 
 
 
