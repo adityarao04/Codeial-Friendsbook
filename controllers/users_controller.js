@@ -20,7 +20,7 @@ module.exports.signIn = function(req, res) {
 
 // get the sign up data
 module.exports.create = function(req, res) {
-    // TODO later
+
 }
 
 // sign in and create a session for the user
