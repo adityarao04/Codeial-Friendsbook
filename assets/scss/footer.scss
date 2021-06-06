@@ -1,0 +1,21 @@
+footer {
+    height: 80px;
+    background-color: rgb(117, 116, 117);
+    display: flex;
+    color: white;
+    font-size: 1rem;
+    align-items: center;
+    #footer-logo-description {
+        padding-left: 1%;
+    }
+    #footer-links {
+        display: flex;
+        flex-direction: column;
+        padding-left: 2%;
+        a {
+            text-decoration: none;
+            color: white;
+            padding-top: 1%;
+        }
+    }
+}
