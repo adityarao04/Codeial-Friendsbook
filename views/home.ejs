@@ -10,4 +10,26 @@
         <textarea name="content" cols="30" rows="3" id="" placeholder="say something you feel"></textarea>
         <input type="submit" value="Post">
     </form>
+
+
+    <div id="posts-list-container">
+        <ul>
+            <% for(posts of posts){%>
+                <li>
+                    <p>
+
+                        <%= posts.content%>
+                            <br>
+                            <small>
+                            <%= posts.user.name %>
+                        </small>
+                            <small>
+                            <%= posts.user.createdAt%>
+                        </small>
+                    </p>
+                </li>
+
+                <%}%>
+        </ul>
+    </div>
 </section>
