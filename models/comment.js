@@ -6,13 +6,11 @@ const commentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-
     // comment belongs to a user 
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-
     post: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Post'

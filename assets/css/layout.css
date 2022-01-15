@@ -1,5 +1,14 @@
 body {
   margin: 0;
+  background-color: #fbf6ee;
   /* text-align: center; */ }
+  body #noty_layout__centerRight {
+    top: 14% !important; }
   body #layout-main {
-    height: 100vh; }
+    height: 83vh; }
+    body #layout-main h1 {
+      text-align: center; }
+    body #layout-main section#feed-posts {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }

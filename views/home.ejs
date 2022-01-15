@@ -1,48 +1,44 @@
-<h1>
-    Codeial /
+<link rel="stylesheet" href="/css/home.css">
+<!-- <h1>
+    MEET+ /
     <%= title %>
-</h1>
+</h1> -->
+
+<div id="hompage-main-container">
 
 
-<section id="feed-posts">
-    <h4>Posts</h4>
-    <% if(locals.user){ %>
-        <form action="/posts/create" id="new-post-form" method="post">
-            <textarea name="content" cols="30" rows="3" id="" placeholder="say something you feel"></textarea>
-            <input type="submit" value="Post">
-        </form>
-        <% }%>
 
 
-            <div id="posts-list-container">
-                <ul>
-                    <% for(post of posts){%>
-                        <li>
-                            <p>
-
-                                <%= post.content%>
-                                    <br>
-                                    <small>
-                            <%= post.user.name %>
-                        </small>
-                                    <small>
-                            <%= post.user.createdAt%>
-                        </small>
-                            </p>
-                            <div class="post-comments">
-                                <%if(locals.user){%>
-                                    <form action="/comments/create" method="POST" id="comments-form">
-                                        <input type="text" name="content" placeholder="Type Here to add comment...">
-                                        <input type="hidden" name="post" value="<%= post._id %>">
-                                        <input type="submit" value="Add Comment">
-                                    </form>
+    <section id="feed-posts">
+        <h4>Posts</h4>
+        <% if(locals.user){ %>
+            <form action="/posts/create" id="new-post-form" method="post">
+                <textarea name="content" cols="30" rows="3" id="" placeholder="say something you feel" required autocomplete="off"></textarea>
+                <input type="submit" value="Post" autocomplete="off">
+            </form>
+            <% }%>
 
 
-                                    <%}%>
-                            </div>
-                        </li>
+                <div id="posts-list-container">
+                    <ul>
+                        <% for(post of posts){%>
+                            <%- include('_post'); %>
 
-                        <%}%>
-                </ul>
-            </div>
-</section>
+                                <%}%>
+                    </ul>
+                </div>
+    </section>
+
+    <section id='user-friends'>
+        <h4>Friends</h4>
+        <% for(u of all_users){%>
+
+            <p>
+                <a href="/users/profile/<%= u.id %>">
+                    <%=u.name%>
+                </a>
+            </p>
+            <%}%>
+    </section>
+
+</div>

@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 // connect to db
-mongoose.connect('mongodb://localhost/codeial_development');
+mongoose.connect('mongodb://127.0.0.1/codeial_development?authSource=admin');
+
 
 const db = mongoose.connection;
 

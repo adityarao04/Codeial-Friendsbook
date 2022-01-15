@@ -1,6 +1,6 @@
 const Post = require('../models/post')
-
-module.exports.home = function(req, res) {
+const User = require('../models/user')
+module.exports.home = async function(req, res) {
     // check cookies
     // console.log(req.cookies);
     // change cookies
@@ -15,13 +15,44 @@ module.exports.home = function(req, res) {
     //     });
     // })
 
-    // populate the user of each post
-    Post.find({}).populate('user').exec(function(err, posts) {
+    try {
+        // populate the user of each post
+        let posts = await Post.find({})
+            .populate('user')
+            .populate({
+                path: 'comments',
+                populate: {
+                    path: 'user'
+                }
+            })
+        let users = await User.find({});
+
+
         return res.render('home', {
-            title: " Friendsbook | Home",
-            posts: posts
+            title: " MEET+ | Home",
+            posts: posts,
+            all_users: users
         });
-    })
+    } catch (err) {
+
+        console.log("Error", err);
+        return;
+    }
+
+
+
+
+    // .exec(function(err, posts) {
+    //     User.find({}, function(err, users) {
+    //         return res.render('home', {
+    //             title: " MEET+ | Home",
+    //             posts: posts,
+    //             all_users: users
+    //         });
+
+    //     })
+
+    // })
 
 
 }
