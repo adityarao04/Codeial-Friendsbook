@@ -13,14 +13,14 @@
         <h4>Posts</h4>
         <% if(locals.user){ %>
             <form action="/posts/create" id="new-post-form" method="post">
-                <textarea name="content" cols="30" rows="3" id="" placeholder="say something you feel" required autocomplete="off"></textarea>
-                <input type="submit" value="Post" autocomplete="off">
+                <textarea name="content" cols="30" rows="10" id="post-container" placeholder="say something you feel" required autocomplete="off"></textarea>
+                <input type="submit" value="Post" autocomplete="off" class="submit-btn">
             </form>
             <% }%>
 
 
                 <div id="posts-list-container">
-                    <ul>
+                    <ul style="list-style: none;">
                         <% for(post of posts){%>
                             <%- include('_post'); %>
 
@@ -42,3 +42,7 @@
     </section>
 
 </div>
+
+<!-- importing this script for creating the comments -->
+<script src="/js/home_post_comments.js"></script>
+<script src="/js/home_posts.js"></script>

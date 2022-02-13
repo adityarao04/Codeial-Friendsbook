@@ -2,9 +2,37 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
+    margin-top: 1rem;
     #feed-posts {
         width: 70%;
         padding: 10px;
+        height: 100%;
+        textarea#post-container {
+            border: none;
+            outline: none;
+            padding: 0.3rem;
+            padding-left: 1rem;
+            padding-top: 0.8rem;
+            #new-post-form-container {
+                display: flex;
+                flex-direction: column;
+                .submit-btn {
+                    width: 7rem;
+                    padding: 0.5rem;
+                    font-size: 1rem;
+                    outline: none;
+                    border: none;
+                    background-color: #4C334D;
+                    color: white;
+                    border-radius: 14px;
+                    margin-top: 1rem;
+                    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
+                    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+                    cursor: pointer;
+                }
+            }
+        }
     }
     #user-friends {
         width: 30%;

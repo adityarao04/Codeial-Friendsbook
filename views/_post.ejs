@@ -1,34 +1,40 @@
-<li>
-    <p>
+<link rel="stylesheet" href="/css/post.css">
+<li id='post-<%= post._id%>' class='post-container'>
+    <div class='post-container__post'>
         <%if(locals.user && locals.user.id == post.user.id){%>
 
 
             <small>
-        <a href="/posts/destroy/<%= post.id %>">X</a>
+        <a class='delete-post-button' href="/posts/destroy/<%= post.id %>">X</a>
          </small>
             <%}%>
-                <%= post.content%>
-                    <br>
+                <div class="post-content-container">
+                    <%= post.content%>
+
+                </div>
+                <div class="additional-info-container">
                     <small>
-    <%= post.user.name %>
-        </small>
+                        <%= post.user.name %>
+                        </small>
                     <small>
-    <%= post.user.createdAt%>
-      </small>
-    </p>
+                        <%= post.user.createdAt%>
+                        </small>
+
+                </div>
+    </div>
     <div class="post-comments">
         <%if(locals.user){%>
-            <form action="/comments/create" method="POST" id="comments-form">
-                <input type="text" name="content" autocomplete="off" placeholder="Type Here to add comment..." required>
+            <form id="post-<%= post._id %>-comments-form" action="/comments/create" method="POST" class='comments-form'>
+                <input type="text" name="content" autocomplete="off" placeholder="Type Here to add comment..." required class='input-comment'>
                 <input type="hidden" autocomplete="off" name="post" value="<%= post._id %>">
-                <input type="submit" value="Add Comment">
+                <input type="submit" value="Add Comment" class="comment-submit">
             </form>
 
 
             <%}%>
 
                 <div class="post-comments-list">
-                    <ul id="post-comments-<%= post._id %>">
+                    <ul id="post-comments-<%= post._id %>" style="list-style: none;">
                         <% for(comment of post.comments){%>
 
 

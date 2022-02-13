@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-color: #fbf6ee;
+    background-color: #F6F7FB;
     #noty_layout__centerRight {
         top: 14% !important;
     }
@@ -13,7 +13,8 @@ body {
         section#feed-posts {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            // align-items: center;
+            height: 100%;
         }
     }
 }
