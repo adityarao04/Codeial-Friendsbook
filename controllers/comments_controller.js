@@ -10,7 +10,7 @@ module.exports.create = async function(req, res) {
 
     try {
         let post = await Post.findById(req.body.post);
-
+        // sentiment analysis API
         let postData = `http://127.0.0.1:5000/?q=\'${req.body.content}\'`
         var options = {
             'method': 'GET',
