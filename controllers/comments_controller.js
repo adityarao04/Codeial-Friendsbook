@@ -1,38 +1,61 @@
 const Comment = require('../models/comment');
 const Post = require('../models/post');
+var request = require('request');
+
+
+
+
 
 module.exports.create = async function(req, res) {
 
     try {
         let post = await Post.findById(req.body.post);
 
-        if (post) {
-            let comment = await Comment.create({
-                content: req.body.content,
-                post: req.body.post,
-                user: req.user._id
-            });
+        let postData = `http://127.0.0.1:5000/?q=\'${req.body.content}\'`
+        var options = {
+            'method': 'GET',
+            'url': postData,
+            'headers': {}
+        };
 
-            post.comments.push(comment);
-            post.save();
-
-            if (req.xhr) {
-                // Similar for comments to fetch the user's id!
-                comment = await comment.populate('user', 'name').execPopulate();
-
-                return res.status(200).json({
-                    data: {
-                        comment: comment
-                    },
-                    message: "Post created!"
+        request(options, async function(error, response) {
+            debugger;
+            if (error) throw new Error(error);
+            let responseJson = JSON.parse(response.body)
+            console.log(req.body.content);
+            console.log(responseJson.sentiment);
+            if (post && responseJson.sentiment === 'Positive') {
+                let comment = await Comment.create({
+                    content: req.body.content,
+                    post: req.body.post,
+                    user: req.user._id
                 });
+
+                post.comments.push(comment);
+                post.save();
+
+                if (req.xhr) {
+                    // Similar for comments to fetch the user's id!
+                    comment = await comment.populate('user', 'name').execPopulate();
+
+                    return res.status(200).json({
+                        data: {
+                            comment: comment
+                        },
+                        message: "Post created!"
+                    });
+                }
+
+
+                req.flash('success', 'Comment published!');
+
+                res.redirect('/');
+            } else {
+                req.flash('error', 'Comment of Bad sentiment');
+
+                res.redirect('/');
             }
-
-
-            req.flash('success', 'Comment published!');
-
-            res.redirect('/');
-        }
+        });
     } catch (err) {
         req.flash('error', err);
         return;
@@ -52,7 +75,11 @@ module.exports.destroy = async function(req, res) {
 
             comment.remove();
 
-            let post = Post.findByIdAndUpdate(postId, { $pull: { comments: req.params.id } });
+            let post = Post.findByIdAndUpdate(postId, {
+                $pull: {
+                    comments: req.params.id
+                }
+            });
 
             // send the comment id which was deleted back to the views
             if (req.xhr) {
