@@ -1,16 +1,22 @@
+<link rel="stylesheet" href="/css/user_sign_up.css">
 <h1>Sign Up</h1>
-
-<form action="/users/create" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-    <input type="submit" name="submit" value="Sign Up">
-
-
-</form>
+<div class="container-sign">
+    <div>
+        <form action="/users/create" method="POST" class="user-form">
+            <input type="text" class="user-form-input" name="name" placeholder="Your Name" required>
+            <input type="email" class="user-form-input" name="email" placeholder="Your Email" required>
+            <input type="password" class="user-form-input" name="password" placeholder="Password" required>
+            <input type="password" class="user-form-input" name="confirm_password" placeholder="Confirm Password" required>
+            <input type="submit" class="user-form-input" name="submit" value="Sign Up">
 
 
-<p>
-    <a href="/users/auth/google">Google Sign In/Sign Up</a>
-</p>
+        </form>
+        <p class="login-using-google">
+            <a href="/users/auth/google" class="google-login-link">
+                <img class="google-logo" src="/images/google-icon.svg"> Google Sign In/Sign Up</a>
+        </p>
+    </div>
+
+
+    <img class="meet-plus-mssg sign-up-page-logo" src="/images/SIGN-UP Image.svg">
+</div>
