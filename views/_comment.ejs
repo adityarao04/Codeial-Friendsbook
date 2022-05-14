@@ -1,13 +1,15 @@
-<li>
-    <p>
+<link rel="stylesheet" href="/css/comment.css">
+
+<li class="comment-wrapper">
+    <p class="comment-wrapper__container">
         <% if (locals.user && locals.user.id == comment.user.id){ %>
             <small>
-               <a href="/comments/destroy/<%= comment.id %>">X</a>
+               <a class="comment-wrapper__container__close" href="/comments/destroy/<%= comment.id %>"><img src='https://cdn-icons-png.flaticon.com/512/0/39.png' alt="remove-post"></a></a>
            </small>
             <% } %>
                 <%= comment.content %>
                     <br>
-                    <small>
+                    <small class="comment-wrapper__container__username">
                <%= comment.user.name %>
            </small>
     </p>

@@ -6,7 +6,8 @@ footer {
     font-size: 1rem;
     align-items: center;
     background-color: black;
-    position: absolute;
+    // position: absolute;
+    display: none;
     bottom: 0;
     width: 100vw;
     #footer-logo-description {

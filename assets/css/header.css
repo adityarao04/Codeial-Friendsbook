@@ -1,20 +1,50 @@
 header {
   height: 4rem;
-  color: white;
-  background-color: #312244;
+  color: #2e81f4;
+  background-color: #fff;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   z-index: 100;
+  box-shadow: 0px 5px 8px -9px #000000bf;
   width: 100vw; }
   header #logo-description {
     font-size: 2rem;
     padding-left: 1%; }
     header #logo-description #logo-description-link {
       text-decoration: none;
-      color: white;
+      color: inherit;
       font-weight: 700; }
+  header .header-nav {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: center; }
+    header .header-nav__navContainer {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      width: 5rem;
+      cursor: pointer;
+      transition: .5s; }
+      header .header-nav__navContainer :hover {
+        background-color: #EFEFEF;
+        border-radius: 4px;
+        border-bottom: 4px solid #2e81f4; }
+      header .header-nav__navContainer__link {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        header .header-nav__navContainer__link :hover {
+          background-color: none !important;
+          border-radius: none !important;
+          border-bottom: none !important; }
+        header .header-nav__navContainer__link__img {
+          height: 30px;
+          width: 30px; }
   header #Sign-in-out {
     display: flex;
     flex-direction: row;
@@ -27,6 +57,6 @@ header {
       font-size: 1.3rem; }
       header #Sign-in-out li a {
         text-decoration: none;
-        color: white;
+        color: inherit;
         text-decoration: none;
         font-size: 1.6rem; }

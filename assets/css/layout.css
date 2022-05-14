@@ -1,11 +1,11 @@
 body {
   margin: 0;
-  background-color: #F6F7FB;
+  background-color: #f1f2f5;
   /* text-align: center; */ }
   body #noty_layout__centerRight {
     top: 14% !important; }
   body #layout-main {
-    height: 83vh; }
+    height: auto; }
     body #layout-main h1 {
       text-align: center; }
     body #layout-main section#feed-posts {

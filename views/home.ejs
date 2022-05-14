@@ -5,42 +5,72 @@
 </h1> -->
 
 <div id="hompage-main-container">
+    <div class="sidebar">
+        <ul class="sidebar__list">
+
+            <li class="sidebar__list__listing">
+                <% if (locals.user){ %>
+
+                    <a class="sidebar__list__listing__link" href="/users/profile/<%= user.id %>">
+                        <img class="sidebar__list__listing__link__image" src="/images/user.png" alt="">
+                        <%=user.name%>
+                    </a>
+                    <% }%>
+            </li>
+            <li class="sidebar__list__listing">
+                <img class="sidebar__list__listing__link__image" src="/images/meditation.svg" alt="">
+                <a class="sidebar__list__listing__link" href="#">wellness</a>
+
+
+            </li>
+            <li class="sidebar__list__listing">
+                <img class="sidebar__list__listing__link__image" src="/images/user.png" alt="">
+                <a class="sidebar__list__listing__link" href="#">therapy</a></li>
+            <li class="sidebar__list__listing">
+                <img class="sidebar__list__listing__link__image" src="/images/Selflove.svg" alt="">
+                <a class="sidebar__list__listing__link" href="#">Self Love</a></li>
+        </ul>
+    </div>
 
 
 
 
-    <section id="feed-posts">
-        <h4>Posts</h4>
-        <% if(locals.user){ %>
-            <form action="/posts/create" id="new-post-form" method="post">
-                <textarea name="content" cols="30" rows="10" id="post-container" placeholder="say something you feel" required autocomplete="off"></textarea>
-                <input type="submit" value="Post" autocomplete="off" class="submit-btn">
-            </form>
-            <% }%>
+
+    <div class="posts-users-container">
+        <section class='userfriends'>
+            <!-- <h4>Friends</h4> -->
+            <% for(u of all_users){%>
+
+                <p class="userfriends__friend">
+                    <a href="/users/profile/<%= u.id %>">
+                        <%=u.name%>
+                    </a>
+                </p>
+                <%}%>
+        </section>
+        <section id="feed-posts">
+            <!-- <h4>Posts</h4> -->
+            <% if(locals.user){ %>
+                <form action="/posts/create" id="new-post-form" method="post">
+                    <textarea name="content" cols="30" rows="2" id="post-container" placeholder="say something you feel" required autocomplete="off"></textarea>
+                    <input type="submit" value="Post" autocomplete="off" class="submit-btn">
+                </form>
+                <% }%>
 
 
-                <div id="posts-list-container">
-                    <ul style="list-style: none;">
-                        <% for(post of posts){%>
-                            <%- include('_post'); %>
+                    <div class="">
+                        <ul style="list-style: none;">
+                            <% for(post of posts){%>
+                                <%- include('_post'); %>
 
-                                <%}%>
-                    </ul>
-                </div>
-    </section>
+                                    <%}%>
+                        </ul>
+                    </div>
+        </section>
+    </div>
 
-    <section id='user-friends'>
-        <h4>Friends</h4>
-        <% for(u of all_users){%>
 
-            <p>
-                <a href="/users/profile/<%= u.id %>">
-                    <%=u.name%>
-                </a>
-            </p>
-            <%}%>
-    </section>
-    <%- include('_chat_box') -%>
+
 </div>
 
 <!-- importing this script for creating the comments -->
