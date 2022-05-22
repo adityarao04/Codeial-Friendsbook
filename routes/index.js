@@ -18,6 +18,8 @@ router.use('/comments', require('./comments'));
 
 router.use('/api', require('./api'));
 
+router.use('/page', require('./page'))
+
 // for any further routes,access from here
 
 // router.use('/routerName',require('./routerfile));
