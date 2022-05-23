@@ -4,6 +4,7 @@ const Comment = require('../models/comment');
 
 
 module.exports.toggleLike = async function(req, res) {
+
     try {
 
         // likes/toggle/?id=abcdef&type=Post
@@ -13,6 +14,7 @@ module.exports.toggleLike = async function(req, res) {
 
         if (req.query.type == 'Post') {
             likeable = await Post.findById(req.query.id).populate('likes');
+            console.log("likeable", likeable);
         } else {
             likeable = await Comment.findById(req.query.id).populate('likes');
         }

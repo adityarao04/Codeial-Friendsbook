@@ -8,6 +8,8 @@ console.log('router loaded');
 
 router.get('/', homeController.home);
 
+router.use('/likes', require('./likes'));
+
 router.use('/users', require('./users'));
 
 router.use('/stories', require('./stories'));
@@ -20,7 +22,7 @@ router.use('/api', require('./api'));
 
 router.use('/page', require('./page'))
 
-router.use('/likes', require('./likes'));
+
 
 // for any further routes,access from here
 

@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/comment.css">
 
-<li class="comment-wrapper">
+<li class="comment-wrapper" id="comment-<%= comment._id %>">
     <p class="comment-wrapper__container">
         <% if (locals.user && locals.user.id == comment.user.id){ %>
             <small>

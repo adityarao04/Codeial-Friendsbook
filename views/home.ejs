@@ -28,7 +28,7 @@
                 <a class="sidebar__list__listing__link" href="page/therapy">therapy</a></li>
             <li class="sidebar__list__listing">
                 <img class="sidebar__list__listing__link__image" src="/images/Selflove.svg" alt="">
-                <a class="sidebar__list__listing__link" href="#">Self Love</a></li>
+                <a class="sidebar__list__listing__link" href="#">Self Care</a></li>
         </ul>
     </div>
 
@@ -79,3 +79,13 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
 <script src="/js/chat_engine.js"></script>
+
+
+<!-- CHANGE :: import the script file for toggle likes, also run it over for the already present posts and comments on the page -->
+<script src="js/toggle_likes.js"></script>
+<script>
+    $('.toggle-like-button').each(function() {
+        let self = this;
+        let toggleLike = new ToggleLike(self);
+    });
+</script>

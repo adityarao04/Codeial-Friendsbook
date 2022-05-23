@@ -4,7 +4,8 @@
   font-size: 1.4rem;
   color: #2e81f4;
   flex-direction: column;
-  align-items: center; }
+  align-items: center;
+  margin-bottom: 5rem; }
   .wellnessContainer__heading {
     text-align: center; }
   .wellnessContainer__imageWrapper {

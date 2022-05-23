@@ -6,6 +6,7 @@ $("#happy").on("click", function(e) {
     $("#happy_content").show()
     $("#happy_content").css('display', 'flex');
     $("#neutral_content").hide()
+    $('iframe').hide()
     $("#sad_content").hide()
     $('.wellnessContainer__showQuizBtn').hide()
 
@@ -14,6 +15,7 @@ $("#happy").on("click", function(e) {
 $("#neutral").on("click", function(e) {
     console.log('neutral');
     $("#neutral_content").show()
+    $('iframe').hide()
     $("#neutral_content").css('display', 'flex');
     $("#happy_content").hide()
     $("#sad_content").hide()
@@ -24,8 +26,9 @@ $("#neutral").on("click", function(e) {
 
 $("#sad").on("click", function(e) {
     console.log('sad');
-    $("#sad_content").show()
-    $("#sad_content").css('display', 'flex');
+
+    // $("#sad_content").show()
+    // $("#sad_content").css('display', 'flex');
     $("#happy_content").hide()
     $("#neutral_content").hide()
     $('.wellnessContainer__showQuizBtn').show()

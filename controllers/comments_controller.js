@@ -2,7 +2,7 @@ const Comment = require('../models/comment');
 const Post = require('../models/post');
 var request = require('request');
 const commentsMailer = require('../mailers/comments_mailer');
-
+const Like = require('../models/like');
 
 
 
@@ -81,6 +81,9 @@ module.exports.destroy = async function(req, res) {
                     comments: req.params.id
                 }
             });
+
+            // CHANGE :: destroy the associated likes for this comment
+            await Like.deleteMany({ likeable: comment._id, onModel: 'Comment' });
 
             // send the comment id which was deleted back to the views
             if (req.xhr) {

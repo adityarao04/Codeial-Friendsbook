@@ -27,39 +27,87 @@
 
 
     // method to create a post in DOM
+    // let newPostDom = function(post) {
+    //     return $(`<li id='post-${post._id}'>
+    //     <p>
+
+
+
+    //             <small>
+    //         <a class='delete-post-button' href="/posts/destroy/${post._id}">X</a>
+    //          </small>
+
+    //          ${post.content}
+    //                     <br>
+    //                     <small>
+    //                     ${post.user.name}
+    //         </small>
+    //                     <small>
+
+    //       </small>
+    //     </p>
+    //     <div class="post-comments">
+
+    //             <form action="/comments/create" method="POST" id="comments-form">
+    //                 <input type="text" name="content" autocomplete="off" placeholder="Type Here to add comment..." required>
+    //                 <input type="hidden" autocomplete="off" name="post" value="${post._id}">
+    //                 <input type="submit" value="Add Comment">
+    //             </form>
+
+
+
+
+    //                 <div class="post-comments-list">
+    //                     <ul id="post-comments-${post._id}">
+
+
+    //                     </ul>
+    //                 </div>
+    //     </div>
+    // </li>`)
+    // }
+
     let newPostDom = function(post) {
-        return $(`<li id='post-${post._id}'>
-        <p>
-            
+        return $(`<li id='post-<%= post._id%>' class='post-container'>
+        <div class='post-container__post'>
     
     
                 <small>
-            <a class='delete-post-button' href="/posts/destroy/${post._id}">X</a>
+            <a class='delete-post-button' href="/posts/destroy/<%= post.id %>"><img src='https://cdn-icons-png.flaticon.com/512/0/39.png' alt="remove-post"></a>
              </small>
-               
-             ${post.content}
-                        <br>
+                    <div class="post-content-container">
+                        <%= post.content%>
+    
+                    </div>
+                    <div class="additional-info-container">
                         <small>
-                        ${post.user.name}
-            </small>
+                            <%= post.user.name %>
+                            </small>
                         <small>
-        
-          </small>
-        </p>
+                            <%= post.user.createdAt%>
+                            </small>
+    
+                    </div>
+                    <small>
+                            
+                                <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${post._id}&type=Post">
+                                    0 Likes
+                                </a>
+                            
+                        </small>
+        </div>
         <div class="post-comments">
-            
-                <form action="/comments/create" method="POST" id="comments-form">
-                    <input type="text" name="content" autocomplete="off" placeholder="Type Here to add comment..." required>
-                    <input type="hidden" autocomplete="off" name="post" value="${post._id}">
-                    <input type="submit" value="Add Comment">
+         
+                <form id="post-<%= post._id %>-comments-form" action="/comments/create" method="POST" class='comments-form'>
+                    <input type="text" name="content" autocomplete="off" placeholder="Type Here to add comment..." required class='input-comment'>
+                    <input type="hidden" autocomplete="off" name="post" value="<%= post._id %>">
+                    <input type="submit" value="Add Comment" class="comment-submit">
                 </form>
     
     
-                
     
                     <div class="post-comments-list">
-                        <ul id="post-comments-${post._id}">
-                           
+                        <ul id="post-comments-<%= post._id %>" style="list-style: none;">
     
                         </ul>
                     </div>
