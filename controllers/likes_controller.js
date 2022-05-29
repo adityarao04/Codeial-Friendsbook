@@ -48,18 +48,21 @@ module.exports.toggleLike = async function(req, res) {
             likeable.save();
 
         }
+        if (req.xhr) {
+            return res.json(200, {
+                message: "Request successful!",
+                data: {
+                    deleted: deleted
+                }
+            })
+        }
 
-        return res.json(200, {
-            message: "Request successful!",
-            data: {
-                deleted: deleted
-            }
-        })
 
+        return res.redirect('/')
 
 
     } catch (err) {
-        console.log(err);
+        console.log("err", err);
         return res.json(500, {
             message: 'Internal Server Error'
         });

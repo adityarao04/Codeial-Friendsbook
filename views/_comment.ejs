@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/comment.css">
 
-<li class="comment-wrapper" id="comment-<%= comment._id %>">
+<li class="comment-wrapper hello" id="comment-<%= comment._id %>">
     <p class="comment-wrapper__container">
         <% if (locals.user && locals.user.id == comment.user.id){ %>
             <small>
@@ -10,7 +10,17 @@
                 <%= comment.content %>
                     <br>
                     <small class="comment-wrapper__container__username">
-               <%= comment.user.name %>
+                     <%= comment.user.name %>
+                     </small>
+
+                    <small>
+               <% if (locals.user){ %>
+                   <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
+                           <%= comment.likes.length %> <img src="/images/like.svg" alt="">
+                   </a>
+               <% }else{ %>
+                   <%= comment.likes.length %> <img src="/images/like.svg" alt="">
+               <% } %>
            </small>
     </p>
 

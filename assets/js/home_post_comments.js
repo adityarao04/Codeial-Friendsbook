@@ -57,23 +57,47 @@ class PostComments {
     }
 
 
+    // newCommentDom(comment) {
+    //     // I've added a class 'delete-comment-button' to the delete comment link and also id to the comment's li
+    //     return $(`<li id="comment-${ comment._id }">
+    //                     <p>
+
+    //                         <small>
+    //                             <a class="delete-comment-button" href="/comments/destroy/${comment._id}">X</a>
+    //                         </small>
+
+    //                         ${comment.content}
+    //                         <br>
+    //                         <small>
+    //                             ${comment.user.name}
+    //                         </small>
+    //                     </p>    
+
+    //             </li>`);
+    // }
     newCommentDom(comment) {
         // I've added a class 'delete-comment-button' to the delete comment link and also id to the comment's li
-        return $(`<li id="comment-${ comment._id }">
-                        <p>
-                            
-                            <small>
-                                <a class="delete-comment-button" href="/comments/destroy/${comment._id}">X</a>
-                            </small>
-                            
-                            ${comment.content}
-                            <br>
-                            <small>
-                                ${comment.user.name}
-                            </small>
-                        </p>    
-
-                </li>`);
+        return $(`<li class="comment-wrapper" id="comment-<%= comment._id %>">
+        <p class="comment-wrapper__container">
+                <small>
+                   <a class="comment-wrapper__container__close delete-comment-button" href="/comments/destroy/<%= comment.id %>"><img src='https://cdn-icons-png.flaticon.com/512/0/39.png' alt="remove-post"></a></a>
+               </small>
+               ${comment.content}
+                        <br>
+                        <small class="comment-wrapper__container__username hello">
+                        ${comment.user.name}
+                     </small>
+    
+                        <small>
+                   
+                       <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
+                               ${comment.likes.length} Likes
+                       </a>
+               </small>
+        </p>
+    
+    
+    </li>`);
     }
 
 

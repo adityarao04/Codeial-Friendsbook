@@ -21,9 +21,7 @@ module.exports.create = async function(req, res) {
         request(options, async function(error, response) {
             debugger;
             if (error) throw new Error(error);
-            let responseJson = JSON.parse(response.body)
-            console.log(req.body.content);
-            console.log(responseJson.sentiment);
+            let responseJson = JSON.parse(response.body);
             if (post && responseJson.sentiment === 'Positive') {
                 let comment = await Comment.create({
                     content: req.body.content,

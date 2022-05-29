@@ -13,8 +13,8 @@
                 url: '/posts/create',
                 data: newPostFrom.serialize(),
                 success: function(data) {
-                    console.log(data);
                     let newPost = newPostDom(data.data.post);
+                    console.log("newPost", newPost);
                     $('#posts-list-container>ul').prepend(newPost);
                     deletePost($('.delete-post-button', newPost));
                 },
@@ -68,23 +68,20 @@
     // }
 
     let newPostDom = function(post) {
-        return $(`<li id='post-<%= post._id%>' class='post-container'>
+        return $(`<li id='post-${post._id}' class='post-container'>
         <div class='post-container__post'>
     
     
                 <small>
-            <a class='delete-post-button' href="/posts/destroy/<%= post.id %>"><img src='https://cdn-icons-png.flaticon.com/512/0/39.png' alt="remove-post"></a>
+            <a class='delete-post-button' href="/posts/destroy/${post.id}"><img src='https://cdn-icons-png.flaticon.com/512/0/39.png' alt="remove-post"></a>
              </small>
                     <div class="post-content-container">
-                        <%= post.content%>
+                        ${post.content}
     
                     </div>
                     <div class="additional-info-container">
                         <small>
-                            <%= post.user.name %>
-                            </small>
-                        <small>
-                            <%= post.user.createdAt%>
+                             ${post.user.name}
                             </small>
     
                     </div>
@@ -98,16 +95,16 @@
         </div>
         <div class="post-comments">
          
-                <form id="post-<%= post._id %>-comments-form" action="/comments/create" method="POST" class='comments-form'>
+                <form id="post-${post._id}-comments-form" action="/comments/create" method="POST" class='comments-form'>
                     <input type="text" name="content" autocomplete="off" placeholder="Type Here to add comment..." required class='input-comment'>
-                    <input type="hidden" autocomplete="off" name="post" value="<%= post._id %>">
+                    <input type="hidden" autocomplete="off" name="post" value="${post._id}">
                     <input type="submit" value="Add Comment" class="comment-submit">
                 </form>
     
     
     
                     <div class="post-comments-list">
-                        <ul id="post-comments-<%= post._id %>" style="list-style: none;">
+                        <ul id="post-comments-${post._id}" style="list-style: none;">
     
                         </ul>
                     </div>

@@ -9,3 +9,9 @@ module.exports.therapy = function(req, res) {
         title: 'MEET+ | Therapy'
     })
 }
+
+module.exports.selfCare = function(req, res) {
+    return res.render('selfcare', {
+        title: 'MEET+ | Self Care'
+    })
+}

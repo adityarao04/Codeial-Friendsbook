@@ -17,6 +17,9 @@
     .post-container__post .post-content-container {
       margin-top: 10px;
       margin-left: 26px; }
+    .post-container__post .toggle-like-button {
+      text-decoration: none;
+      color: black; }
   .post-container .post-comments {
     display: flex;
     /* margin-top: 30px; */

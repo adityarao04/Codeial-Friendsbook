@@ -11,6 +11,9 @@ router.get('/wellness', pageController.wellness);
 router.get('/therapy', pageController.therapy);
 
 
+router.get('/self-care', pageController.selfCare);
+
+
 
 
 module.exports = router;
